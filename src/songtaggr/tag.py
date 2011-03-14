@@ -33,10 +33,10 @@ def usage():
 
 def printsong(song):
     if song is not None:
-        print ("Title: ", song.title)
-        print ("Artist: ", song.artist)
-        print ("Album: ", song.album)
-        print ("Genre: ", song.genre)
+        print "Title\t:", song.title
+        print "Artist\t:", song.artist
+        print "Album\t:", song.album
+        print "Genre\t:", song.genre
 
 
 def main(argv):
@@ -66,14 +66,12 @@ def main(argv):
         elif opt in ("-g", "--genre"):
             print ("Found genre: ", arg)
             genre = arg
-        else :
-            usage()
-            sys.exit()
 
     for file in args:
-        print ("file: ", file)
+        print "file: ", file
         song = songdetails.scan(file)
         printsong(song)
+        print ""
 
 
 if __name__ == "__main__":
