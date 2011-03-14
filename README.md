@@ -66,4 +66,5 @@ There exists two Eclipse launch configurations:
  * `docs/SphinxDoc songdetails.launch` - Generating documentation.
 
 Using Eclipse you must go to Run Configurations *dialog* and run them once so they appear to the list.
+
 -->
