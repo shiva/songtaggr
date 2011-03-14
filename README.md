@@ -30,6 +30,7 @@ Under Windows you can start the command prompt with administrator rights (by
 right clicking `cmd.exe` and using "Run as administrator") then run the above 
 command.
 	
+<!-- ignore the following
 ### Usage example:
 
     >>> import songdetails
@@ -65,3 +66,4 @@ There exists two Eclipse launch configurations:
  * `docs/SphinxDoc songdetails.launch` - Generating documentation.
 
 Using Eclipse you must go to Run Configurations *dialog* and run them once so they appear to the list.
+-->
