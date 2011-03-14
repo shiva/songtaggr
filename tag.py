@@ -1,9 +1,9 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """Song tagger in python
 
 Tags the specified file list with given tags
 
-Usage: python3 tag.py [options] [source]
+Usage: python3 tag.py [options] <file1> <file2> ... 
 
 Options:
   -a ..., --artist=...    use specified artist
@@ -26,22 +26,27 @@ __license__ = "Python"
 
 import sys
 import getopt
-import eyeD3
+import songdetails
 
 def usage():
     print (__doc__)
 
-def printsong(tag):
-    if tag is not None:
-        print ("Title: ", tag.getTitle())
-        print ("Artist: ", tag.getArtist())
-        print ("Album: ", tag.getAlbum())
-        print ("Genre: ", tag.getGenre())
+def printsong(song):
+    if song is not None:
+        print ("Title: ", song.title)
+        print ("Artist: ", song.artist)
+        print ("Album: ", song.album)
+        print ("Genre: ", song.genre)
+
 
 def main(argv):
     try:
         opts, args = getopt.getopt(argv, "ha:l:g:d", ["help", "artist=", "album=", "genre="]) 
     except getopt.GetoptError:
+        usage()
+        sys.exit(2)
+    
+    if not args:
         usage()
         sys.exit(2)
 
@@ -61,12 +66,14 @@ def main(argv):
         elif opt in ("-g", "--genre"):
             print ("Found genre: ", arg)
             genre = arg
+        else :
+            usage()
+            sys.exit()
 
     for file in args:
         print ("file: ", file)
-        tag = eyeD3.Tag()
-        tag.link(file)
-        printtag()
+        song = songdetails.scan(file)
+        printsong(song)
 
 
 if __name__ == "__main__":

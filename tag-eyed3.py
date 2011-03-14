@@ -26,18 +26,17 @@ __license__ = "Python"
 
 import sys
 import getopt
-import songdetails
+import eyeD3
 
 def usage():
     print (__doc__)
 
-def printsong(song):
-    if song is not None:
-        print ("Title: ", song.title)
-        print ("Artist: ", song.artist)
-        print ("Album: ", song.album)
-        print ("Genre: ", song.genre)
-
+def printsong(tag):
+    if tag is not None:
+        print ("Title: ", tag.getTitle())
+        print ("Artist: ", tag.getArtist())
+        print ("Album: ", tag.getAlbum())
+        print ("Genre: ", tag.getGenre())
 
 def main(argv):
     try:
@@ -65,8 +64,9 @@ def main(argv):
 
     for file in args:
         print ("file: ", file)
-        song = songdetails.scan(file)
-        printsong(song)
+        tag = eyeD3.Tag()
+        tag.link(file)
+        printtag()
 
 
 if __name__ == "__main__":
